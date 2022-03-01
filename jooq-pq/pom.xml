@@ -26,6 +26,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+        <?m2e execute onConfiguration,onIncremental?>
+      <?m2e ignore?>
         <?m2e ignore?>
         <?m2e ignore?>
         <?m2e execute onConfiguration,onIncremental?>
