@@ -18,7 +18,8 @@
 		"zerabba.plsql-debug",
 		"Askia.askia-qexml-generator-extension",
 		"ms-azuretools.vscode-docker",
-		"georgewfraser.vscode-javac"
+		"georgewfraser.vscode-javac",
+		"ms-mssql.mssql"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
