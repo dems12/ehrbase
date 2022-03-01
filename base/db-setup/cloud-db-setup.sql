@@ -4,29 +4,45 @@
 -- create database and roles (you might see an error here, these can be ignored)
 -- the first section of the script is similar to createdb.sql
 -- See README for more details re required application configuration
+ 
+CREATE DATABASE EHRBASE WITH LOGIN PASSWORD EHRBASE;
+CREATE ROLE EHRBASE ENCODING 'UTF-8' TEMPLATE TEMPLATE0;
 
-CREATE ROLE ehrbase WITH LOGIN PASSWORD 'ehrbase';
-CREATE DATABASE ehrbase ENCODING 'UTF-8' TEMPLATE template0;
-GRANT ALL PRIVILEGES ON DATABASE ehrbase TO ehrbase;
+GRANT ALL PRIVILEGES ON DATABASE EHRBASE TO EHRBASE;
 
--- install the extensions
-\c ehrbase
-CREATE SCHEMA IF NOT EXISTS ehr AUTHORIZATION ehrbase;
-CREATE SCHEMA IF NOT EXISTS ext AUTHORIZATION ehrbase;
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA ext;
-CREATE EXTENSION IF NOT EXISTS "ltree" SCHEMA ext;
+-- install the extensions \c EHRBASE
+
+CREATE SCHEMA IF NOT EXISTS EHR
+AUTHORIZATION EHRBASE;
+
+
+CREATE SCHEMA IF NOT EXISTS EXT
+AUTHORIZATION EHRBASE;
+
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA EXT;
+
+
+CREATE EXTENSION IF NOT EXISTS "ltree" SCHEMA EXT;
 
 -- setup the search_patch so the extensions can be found
-ALTER DATABASE ehrbase SET search_path TO "$user",public,ext;
--- ensure INTERVAL is ISO8601 encoded
-alter database ehrbase SET intervalstyle = 'iso_8601';
 
-GRANT ALL ON ALL FUNCTIONS IN SCHEMA ext TO ehrbase;
+ALTER DATABASE EHRBASE
+SET SEARCH_PATH TO "$user",
+	PUBLIC,
+	EXT;
+
+-- ensure INTERVAL is ISO8601 encoded
+
+ALTER DATABASE EHRBASE
+SET INTERVALSTYLE = 'iso_8601';
+
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA EXT TO EHRBASE;
 
 -- load the temporal_tables PLPG/SQL functions to emulate the coded extension
 -- original source: https://github.com/nearform/temporal_tables/blob/master/versioning_function.sql
-CREATE OR REPLACE FUNCTION ext.versioning()
-RETURNS TRIGGER AS $$
+
+CREATE OR REPLACE FUNCTION EXT.VERSIONING() RETURNS TRIGGER AS $$
 DECLARE
   sys_period text;
   history_table text;
@@ -203,7 +219,7 @@ BEGIN
        USING OLD, range_lower, time_stamp_to_use;
   END IF;
 
-  IF TG_OP = 'UPDATE' OR TG_OP = 'INSERT' THEN
+IF TG_OP = 'UPDATE' OR TG_OP = 'INSERT' THEN
     manipulate := jsonb_set('{}'::jsonb, ('{' || sys_period || '}')::text[], to_jsonb(tstzrange(time_stamp_to_use, null, '[)')));
 
     RETURN jsonb_populate_record(NEW, manipulate);
@@ -211,4 +227,4 @@ BEGIN
 
   RETURN OLD;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE PLPGSQL;

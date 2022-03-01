@@ -19,7 +19,8 @@
 		"Askia.askia-qexml-generator-extension",
 		"ms-azuretools.vscode-docker",
 		"georgewfraser.vscode-javac",
-		"ms-mssql.mssql"
+		"ms-mssql.mssql",
+		"ms-ossdata.vscode-postgresql"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
