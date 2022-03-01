@@ -21,24 +21,48 @@
 -- It only contains those operations which require superuser privileges.
 -- The actual database schema is managed by flyway.
 --
+ -- create database and roles (you might see an error here, these can be ignored)
 
--- create database and roles (you might see an error here, these can be ignored)
-CREATE ROLE ehrbase WITH LOGIN PASSWORD 'ehrbase';
-CREATE DATABASE ehrbase ENCODING 'UTF-8' TEMPLATE template0;
-GRANT ALL PRIVILEGES ON DATABASE ehrbase TO ehrbase;
+CREATE ROLE EHRBASE WITH LOGIN PASSWORD 'ehrbase';
+
+
+CREATE DATABASE EHRBASE ENCODING 'UTF-8' TEMPLATE TEMPLATE0;
+
+GRANT ALL PRIVILEGES ON DATABASE EHRBASE TO EHRBASE;
 
 -- install the extensions
-CREATE ehrbase
-CREATE SCHEMA IF NOT EXISTS ehr AUTHORIZATION ehrbase;
-CREATE SCHEMA IF NOT EXISTS ext AUTHORIZATION ehrbase;
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA ext;
-CREATE EXTENSION IF NOT EXISTS "temporal_tables" SCHEMA ext;
-CREATE EXTENSION IF NOT EXISTS "jsquery" SCHEMA ext;
-CREATE EXTENSION IF NOT EXISTS "ltree" SCHEMA ext;
 
+C:\ EHRBASE
+CREATE SCHEMA IF NOT EXISTS EHR
+AUTHORIZATION EHRBASE;
+
+
+CREATE SCHEMA IF NOT EXISTS EXT
+AUTHORIZATION EHRBASE;
+
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA EXT;
+
+
+CREATE EXTENSION IF NOT EXISTS "temporal_tables" SCHEMA EXT;
+
+
+CREATE EXTENSION IF NOT EXISTS "jsquery" SCHEMA EXT;
+
+
+CREATE EXTENSION IF NOT EXISTS "ltree" SCHEMA EXT;
+
+--
 -- setup the search_patch so the extensions can be found
-ALTER DATABASE ehrbase SET search_path TO "$user",public,ext;
--- ensure INTERVAL is ISO8601 encoded
-alter database ehrbase SET intervalstyle = 'iso_8601';
 
-GRANT ALL ON ALL FUNCTIONS IN SCHEMA ext TO ehrbase;
+ALTER DATABASE EHRBASE
+SET SEARCH_PATH TO "$user",
+	PUBLIC,
+	EXT;
+
+-- ensure INTERVAL is ISO8601 encoded
+
+ALTER DATABASE EHRBASE
+SET INTERVALSTYLE = 'iso_8601';
+
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA EXT TO EHRBASE;

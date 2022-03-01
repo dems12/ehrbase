@@ -15,7 +15,10 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"zerabba.plsql-debug"
+		"zerabba.plsql-debug",
+		"Askia.askia-qexml-generator-extension",
+		"ms-azuretools.vscode-docker",
+		"georgewfraser.vscode-javac"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

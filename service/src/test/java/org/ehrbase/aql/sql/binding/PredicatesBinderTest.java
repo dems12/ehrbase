@@ -18,14 +18,6 @@
 
 package org.ehrbase.aql.sql.binding;
 
-import org.ehrbase.aql.containment.ContainOperator;
-import org.ehrbase.aql.containment.ContainmentSet;
-import org.ehrbase.aql.containment.ContainmentTest;
-import org.ehrbase.aql.containment.Predicates;
-import org.junit.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class PredicatesBinderTest {
 //
 //    @Test

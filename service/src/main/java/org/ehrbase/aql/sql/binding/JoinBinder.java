@@ -21,6 +21,9 @@
 
 package org.ehrbase.aql.sql.binding;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.ehrbase.aql.sql.queryimpl.attribute.JoinSetup;
 import org.ehrbase.dao.access.interfaces.I_DomainAccess;
 import org.ehrbase.jooq.pg.tables.records.*;
@@ -30,10 +33,8 @@ import org.jooq.SelectQuery;
 import org.jooq.Table;
 import org.jooq.impl.DSL;
 
-import java.util.List;
-import java.util.UUID;
-
-import static org.ehrbase.jooq.pg.Tables.*;
+import openEHR.v1.template.COMPOSITION;
+import openEHR.v1.template.ENTRY;
 
 /**
  * Created by christian on 10/31/2016.

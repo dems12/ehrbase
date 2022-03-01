@@ -16,7 +16,7 @@ import java.io.FileInputStream;
 
 public class TestAqlBase {
 
-    protected static I_DomainAccess testDomainAccess;
+    protected I_DomainAccess testDomainAccess;
     protected static KnowledgeCacheService knowledge;
 
     @ClassRule
