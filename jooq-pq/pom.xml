@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
     Copyright (C) 2019 Vitasystems GmbH and Hannover Medical School.
 
     This file is part of Project EHRbase
@@ -110,9 +108,7 @@
                                 (to be used with Sybase SQL Anywhere) You can also provide your own org.jooq.responsedata.Database
                                 implementation here, if your database is currently not supported or if you
                                 wish to read the database schema fromBinder a file, such as a Hibernate .hbm.xml
-                                file -->
-                            <name>org.jooq.meta.postgres.PostgresDatabase</name>
-                            <!-- All elements that are generated fromBinder your schema (A Java regular
+                                file --><name>org.jooq.meta.postgres.PostgresDatabase</name><!-- All elements that are generated fromBinder your schema (A Java regular
                                 expression. Use the pipe to separate several expressions) Watch out for case-sensitivity.
                                 Depending on your database, this might be important! You can storeComposition case-insensitive
                                 regular expressions using this syntax: (?i:expr) -->
