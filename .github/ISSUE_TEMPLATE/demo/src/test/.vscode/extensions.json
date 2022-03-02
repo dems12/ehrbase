@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "vscjava.vscode-maven",
+        "dhruv.maven-dependency-explorer"
+    ]
+}
