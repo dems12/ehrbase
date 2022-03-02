@@ -20,7 +20,14 @@
 		"ms-azuretools.vscode-docker",
 		"georgewfraser.vscode-javac",
 		"ms-mssql.mssql",
-		"ms-ossdata.vscode-postgresql"
+		"ms-ossdata.vscode-postgresql",
+		"vscjava.vscode-maven",
+		"sensourceinc.vscode-sql-beautify",
+		"ms-mssql.sql-database-projects-vscode",
+		"gitkraken.gitkraken-authentication",
+		"eamodio.gitlens",
+		"dhruv.maven-dependency-explorer",
+		"Oracle.oracledevtools"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
