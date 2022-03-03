@@ -1,0 +1,8 @@
+{
+    "java.home": "\"C:\\Program Files\\Java\\jre1.8.0_321\\bin\\java.exe\"",
+    "python.testing.pytestArgs": [
+        "camedserver"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
